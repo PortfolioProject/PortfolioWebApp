@@ -1,6 +1,8 @@
 from flask import Flask
-app = Flask(__name__)
+from flask_restful import Api
+from .resources.stocks import Stock
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+app = Flask(__name__)
+api = Api(app)
+
+api.add_resource(Stock, '/stock')
