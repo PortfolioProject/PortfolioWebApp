@@ -2,3 +2,4 @@ flask
 requests
 flask-restful
 gunicorn
+flask_sqlalchemy
