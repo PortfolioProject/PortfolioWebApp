@@ -1,7 +1,7 @@
 FROM python:3
 
-RUN mkdir /app
-WORKDIR /app
+RUN mkdir /backend
+WORKDIR /backend
 
 COPY . .
 EXPOSE 8000
