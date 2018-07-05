@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="portfolioApp">
+<html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,39 +7,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
-    <!-- My JS -->
-    <script src="js/app.js"></script>
-    <title>Hello, world!</title>
+    <title>{% block title %}Portfolio Manager{% endblock %}</title>
 </head>
-<body ng-controller="PortfolioController">
-<br/>
-<div class="container">
-    <div class="row">
-        <div class="col">
-        <div class="alert alert-primary" role="alert">
-            Portfolio Dashboard!
+<body>
+        <div id="content">
+            {% block content %}{% endblock %}
         </div>
-        </div>
-    </div>
-    <br/>
-    <!-- form to accept name -->
-    <form novalidate name="userInputForm">
-        <div class="form-group row">
-            <div class="input-group col-8 offset-2">
-                <input type="text" class="form-control" placeholder="Enter the username"
-                       aria-label="Enter the username" aria-describedby="basic-addon2" ng-model="user.name">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" ng-click="fetchDetails()">Fetch</button>
-                </div>
-            </div>
-        </div>
-    </form>
-
-
-</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

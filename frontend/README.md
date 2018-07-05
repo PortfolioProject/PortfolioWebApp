@@ -1,1 +1,0 @@
-After building the docker image, run with `docker run -p80:80 -v $(pwd)/pdisplay.conf:/etc/nginx/conf.d/default.conf -v $(pwd)/pdisplay:/var/www/html/pdisplay/ -d pdisplay`
