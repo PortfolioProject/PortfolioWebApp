@@ -7,4 +7,5 @@ app_name = 'portfolioManager'
 urlpatterns = [
     path('', index.IndexView.as_view(), name='index'),
     path('login/', login.LoginView.as_view(), name='login'),
+    path('logout/', login.LogoutView.as_view(), name='logout')
 ]

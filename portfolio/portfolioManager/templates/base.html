@@ -10,6 +10,31 @@
     <title>{% block title %}Portfolio Manager{% endblock %}</title>
 </head>
 <body>
+    <br />
+    <div class="row">
+        <div class="col-10 offset-1">
+                {% if user.is_authenticated %}
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/">HomePage</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav> 
+                {% endif %}
+        </div>
+    </div>
+        
+
         <div id="content">
             {% block content %}{% endblock %}
         </div>
