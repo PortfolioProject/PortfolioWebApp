@@ -23,6 +23,7 @@
           <th scope="col">Stock</th>
           <th scope="col">Purchase Price</th>
           <th scope="col">Current Price</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,12 @@
                 <td>{{ data.stock_id }}</td>
                 <td>${{ data.purchase_price }}</td>
                 <td>${{ data.current_price }}</td>
+                <td>
+                    <form action="/delete/{{ data.id }}">
+                        {% csrf_token %}
+                        <input class="btn btn-dark" type="submit" value="Delete">
+                    </form>
+                </td>
             </tr>
         {% endfor %}
       </tbody>
