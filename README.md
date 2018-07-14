@@ -2,10 +2,14 @@
 This app displays your portfolio of stocks.
 
 ### How to run
+- Clone the repository
+- ```cd ./portfolio```
+- Run the database migration using ```python manage.py migrate```. We use a sqlite3 database for development.
+- Create a superuser using ```python manage.py createsuperuser```
+- There are a couple of _fixtures_ in place for the database migrations. Run them using ```python manage.py loaddata 
+<fixture_names>```
+- Start the webserver using ```python manage.py runserver```
 
-To run this application, download the source code, then:
-1. Run `docker-compose up &`
 
-There is some dummy data present as _fixtures_ in portfolioManager. 
-Some manual steps required for Django:
-* In order to proceed, create a superuser for the webapp and apply the fixture to get started. In order to do this, attach to the docker instance and run commands manually.
+**Note:** The provided docker-compose is a work in progress, and will be made available once the code moves to using 
+Postgresql.
