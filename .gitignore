@@ -33,6 +33,7 @@ testem.log
 .DS_Store
 
 ### VisualStudioCode ###
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
