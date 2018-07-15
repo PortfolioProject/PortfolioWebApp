@@ -33,8 +33,8 @@ class AddStockInUserPortfolio(LoginRequiredMixin, View):
     def post(self, request):
         form = stock_forms.AddStockForm(request.POST)
         if form.is_valid():
-            purchase_price = form.cleaned_data('purchase_price')
-            id = form.cleaned_data('stock_id')
+            purchase_price = form.cleaned_data['purchase_price']
+            id = form.cleaned_data['stock_id']
             userObj = User.objects.get(id=request.user.id)
             stockObj = Stocks.objects.get(id=id)
             stock_symbol = stockObj.trading_name
