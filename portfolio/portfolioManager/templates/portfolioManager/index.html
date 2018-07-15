@@ -16,6 +16,11 @@
 
 <br/>
 <div class="row">
+    <div class="col-1 offset-10" align="right">
+        <i class="fas fa-plus-square" data-toggle="modal" data-target="#addStockToPortfolio"></i>
+    </div>
+</div>
+<div class="row">
 <div class="col-10 offset-1">
 <table class="table table-striped">
     <thead>
@@ -44,4 +49,30 @@
 </table>
 </div>
 </div>
+
+<!-- Modal to add to portfolio -->
+<div class="modal fade" id="addStockToPortfolio" tabindex="-1" role="dialog" aria-labelledby="addStockToPortfolioTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addStockToPortfolioTitle">Add Stock to Portfolio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/stock/" method="post">
+            <div class="modal-body">
+                {% csrf_token %}
+                {{ add_stock_form }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add Stock</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
