@@ -4,12 +4,7 @@
 
 {% block title %} Login {% endblock %} 
 
-{% block content %} 
-
-{% if error_message %}
-<p>
-    <strong>{{ error_message }}</strong>
-</p>{% endif %}
+{% block content %}
 
 <form action="{% url 'portfolioManager:login' %}" method="post">
     {% csrf_token %} 

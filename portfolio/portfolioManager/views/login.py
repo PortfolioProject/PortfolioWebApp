@@ -15,9 +15,9 @@ class LoginView(View):
             login(request, user)
             return redirect('/')
         else:
-            return HttpResponse('Unsuccessful Login')
+            return render(request, 'portfolioManager/login.html', {'error_message': 'Invalid Credentials'})
 
 class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
-        return redirect('/login/')
+        return redirect('/login')
