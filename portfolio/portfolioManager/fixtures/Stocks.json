@@ -1,0 +1,18 @@
+[
+    {
+      "model": "portfolioManager.Stocks",
+      "pk": 1,
+      "fields": {
+        "trading_name": "MSFT",
+        "stock_name": "Microsoft"
+      }
+    },
+    {
+        "model": "portfolioManager.Stocks",
+        "pk": 2,
+        "fields": {
+          "trading_name": "NVDA",
+          "stock_name": "NVIDIA"
+        }
+      }
+  ]

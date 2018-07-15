@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+
+{% load static %}
+
+{% block title %} Home Page {% endblock %} 
+
+{% block content %}
+<br/>
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="alert alert-success" role="alert">
+            Hey {{ user }}! Here is your portfolio!
+        </div>
+    </div>
+</div>
+
+<br/>
+<div class="row">
+<div class="col-10 offset-1">
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">Stock</th>
+          <th scope="col">Purchase Price</th>
+          <th scope="col">Current Price</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in user_portfolio %}
+            <tr>
+                <td>{{ data.stock_id }}</td>
+                <td>${{ data.purchase_price }}</td>
+                <td>${{ data.current_price }}</td>
+                <td>
+                    <form action="/delete/{{ data.id }}">
+                        {% csrf_token %}
+                        <input class="btn btn-dark" type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+      </tbody>
+</table>
+</div>
+</div>
+{% endblock %}

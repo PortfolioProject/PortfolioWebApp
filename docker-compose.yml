@@ -1,36 +1,32 @@
 version: "3"
 services:
-  backend:
+  web_app:
     build:
-      context: ./backend
+      context: ./portfolio
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - 8000:8000
     environment:
-      - PD_API
+      DB_USER: postgres
+      DB_NAME: portfolio
+      DB_PASSWORD: postgres
+      DB_HOST: db
+    depends_on:
+      - db
+      - adminer
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    volumes:
-      - ./frontend/conf.d:/etc/nginx/conf.d
-      - ./frontend/pdisplay:/var/www/html/pdisplay
-
-  datastore:
+  db:
     image: postgres:10
     restart: always
+    ports:
+      - 5432:5432  
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASWORD: postgres
       POSTGRES_DB: portfolio
-
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
-

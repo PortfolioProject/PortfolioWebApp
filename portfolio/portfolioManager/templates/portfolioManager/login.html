@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+
+{% load static %}
+
+{% block title %} Login {% endblock %} 
+
+{% block content %}
+
+<form action="{% url 'portfolioManager:login' %}" method="post">
+    {% csrf_token %} 
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                    <div class="card">
+                        <div class="card-header bg-info">
+                            Login
+                        </div>
+                        <div class="card-body">
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" >
+                            <br />
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+                            <br />
+                            <div align="center">
+                                <input class="btn btn-dark" type="submit" value="Login">
+                            </div>
+                            <span>Register</span>
+                            <br/>
+                            <span>Forgot Password</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            
+        </div>
+    </div>
+</form>
+
+{% endblock %}

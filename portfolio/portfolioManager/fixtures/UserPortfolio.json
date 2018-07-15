@@ -1,0 +1,22 @@
+[
+    {
+      "model": "portfolioManager.UserPortfolio",
+      "pk": 1,
+      "fields": {
+        "user_id": 1,
+        "stock_id": 1,
+        "purchase_price": 234.50,
+        "current_price": 565.23
+      }
+    },
+    {
+        "model": "portfolioManager.UserPortfolio",
+        "pk": 2,
+        "fields": {
+          "user_id": 1,
+          "stock_id": 2,
+          "purchase_price": 1234.50,
+          "current_price": 235.23
+        }
+      }
+]
