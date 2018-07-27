@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+"""
+This file defines the schema of the databases.
 
+"""
 # Create your models here.
 class Stocks(models.Model):
     trading_name = models.CharField(max_length=10)

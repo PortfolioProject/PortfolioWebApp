@@ -6,8 +6,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class LoginView(View):
     def get(self, request):
+        """
+        :param get request:
+        :return: A HTML page to render
+        """
         return render(request, 'portfolioManager/login.html')
     def post(self, request):
+        """
+        :param request:
+        :return: A web page displaying the user's homepage or the invalid login page
+        """
+
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
@@ -18,6 +27,9 @@ class LoginView(View):
             return render(request, 'portfolioManager/login.html', {'error_message': 'Invalid Credentials'})
 
 class LogoutView(LoginRequiredMixin, View):
+    """
+    To logff the user.
+    """
     def get(self, request):
         logout(request)
         return redirect('/login')
