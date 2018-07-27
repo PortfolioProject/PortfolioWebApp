@@ -17,9 +17,9 @@
                             Login
                         </div>
                         <div class="card-body">
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" >
+                            {{ login_form.username }}
                             <br />
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+                            {{ login_form.password }}
                             <br />
                             <div align="center">
                                 <input class="btn btn-dark" type="submit" value="Login">

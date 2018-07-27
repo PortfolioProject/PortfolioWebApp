@@ -1,6 +1,7 @@
 from django import forms
 from portfolioManager.models import Stocks
 
+
 class AddStockForm(forms.Form):
     available_stocks = Stocks.objects.all()
     tuple_list = [(stock.id, stock.trading_name) for stock in available_stocks]
