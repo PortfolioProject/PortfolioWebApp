@@ -8,6 +8,9 @@ from django.contrib.messages import get_messages
 from portfolioManager.forms import stock_forms
 
 class IndexView(LoginRequiredMixin, View):
+    """
+    This renders the home page of the user.
+    """
     def get(self, request):
         storage = get_messages(request)
         error_message = None
