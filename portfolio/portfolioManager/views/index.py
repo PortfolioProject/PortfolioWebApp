@@ -1,11 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views import View
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from portfolioManager.models import UserPortfolio, Stocks
 from django.contrib.messages import get_messages
+from django.shortcuts import render
+from django.views import View
 from portfolioManager.forms import stock_forms
+from portfolioManager.models import UserPortfolio
+
 
 class IndexView(LoginRequiredMixin, View):
     """

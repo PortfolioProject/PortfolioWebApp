@@ -1,6 +1,7 @@
 from django import forms
 from portfolioManager.models import Stocks
 
+
 class AddStockForm(forms.Form):
     """
     This form is the backend of the form which gets displayed in the frontend.
