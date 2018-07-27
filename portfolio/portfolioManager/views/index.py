@@ -7,6 +7,9 @@ from portfolioManager.models import UserPortfolio
 
 
 class IndexView(LoginRequiredMixin, View):
+    """
+    This renders the home page of the user.
+    """
     def get(self, request):
         storage = get_messages(request)
         error_message = None

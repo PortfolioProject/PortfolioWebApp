@@ -10,6 +10,10 @@ from utils import stock as utils_stock
 
 
 class StockView(LoginRequiredMixin, View):
+    """
+    This class is for removing a particular stock from his/her portfolio
+
+    """
     def get(self, request, id):
         if UserPortfolio.objects.filter(id=id).count() > 0:
             stockUserObj = UserPortfolio.objects.get(id=id)
@@ -22,6 +26,10 @@ class StockView(LoginRequiredMixin, View):
 
 
 class AddStockInUserPortfolio(LoginRequiredMixin, View):
+    """
+    This class is for adding a stock in a user's portfolio
+
+    """
     def post(self, request):
         form = stock_forms.AddStockForm(request.POST)
         if form.is_valid():

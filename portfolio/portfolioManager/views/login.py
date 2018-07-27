@@ -8,9 +8,17 @@ from portfolioManager.forms import login_form
 
 class LoginView(View):
     def get(self, request):
+        """
+        :param get request:
+        :return: A HTML page to render
+        """
         return render(request, 'portfolioManager/login.html', {'login_form': login_form.LoginForm()})
 
     def post(self, request):
+        """
+        :param request:
+        :return: A web page displaying the user's homepage or the invalid login page
+        """
         form = login_form.LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -18,6 +26,7 @@ class LoginView(View):
         else:
             return render(request, 'portfolioManager/login.html',
                           {'error_message': 'Check Input Data', 'login_form': login_form.LoginForm()})
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -28,6 +37,9 @@ class LoginView(View):
 
 
 class LogoutView(LoginRequiredMixin, View):
+    """
+    To logff the user.
+    """
     def get(self, request):
         logout(request)
         return redirect('/login')
