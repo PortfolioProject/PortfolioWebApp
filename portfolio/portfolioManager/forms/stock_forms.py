@@ -10,3 +10,4 @@ class AddStockForm(forms.Form):
     tuple_list = [(stock.id, stock.trading_name) for stock in available_stocks]
     stock_id = forms.ChoiceField(label='Stocks', choices=tuple_list)
     purchase_price = forms.DecimalField(label="Price $", min_value=0.0, decimal_places=2)
+    no_of_stocks   = forms.IntegerField(label='No. of Stocks', min_value=0)

@@ -2,8 +2,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
-
-from portfolioManager.forms import login_form
+import sys
+if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
+    from portfolioManager.forms import login_form
 
 
 class LoginView(View):

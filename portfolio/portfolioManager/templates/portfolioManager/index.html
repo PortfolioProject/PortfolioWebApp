@@ -26,8 +26,8 @@
             <thead>
             <tr>
                 <th scope="col">Stock</th>
-                <th scope="col">Purchase Price</th>
-                <th scope="col">Current Price</th>
+                <th scope="col">Average Price</th>
+                <th scope="col">No. of Stocks</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -36,7 +36,7 @@
             <tr>
                 <td>{{ data.stock_id }}</td>
                 <td>${{ data.purchase_price }}</td>
-                <td>${{ data.current_price }}</td>
+                <td>{{ data.no_of_stocks] }}</td>
                 <td>
                     <form action="/delete/{{ data.id }}">
                         {% csrf_token %}
