@@ -51,6 +51,7 @@ class AddStockInUserPortfolio(LoginRequiredMixin, View):
             stock_id = form.cleaned_data['stock_id']
             user_stock = Stocks.objects.get(id=stock_id)
             purchase_time = request.POST['purchase_time']
+
             UserPortfolio.objects.create(stock_id=user_stock, user_id=request.user, purchase_price=purchase_price,
                                          purchase_time=purchase_time, no_of_stocks=no_of_stocks)
         return redirect('/')
