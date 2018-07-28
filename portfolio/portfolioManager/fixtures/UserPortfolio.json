@@ -18,5 +18,15 @@
           "purchase_price": 1234.50,
           "no_of_stocks":  10
         }
-      }
+      },
+  {
+    "model": "portfolioManager.UserPortfolio",
+    "pk": 3,
+    "fields": {
+      "user_id": 1,
+      "stock_id": 1,
+      "purchase_price": 10,
+      "no_of_stocks":  4
+    }
+  }
 ]

@@ -44,7 +44,8 @@ class IndexView(LoginRequiredMixin, View):
                 number_of_stocks += stock_entry.no_of_stocks
                 total_value += stock_entry.purchase_price * stock_entry.no_of_stocks
 
-            user_portfolio.append({'stock_id': stock_name, 'no_of_stocks': number_of_stocks,
+            user_portfolio.append({'stock_id': stock_name, 'no_of_stocks':
+                number_of_stocks,
                                    'purchase_price': total_value/number_of_stocks})
 
         return user_portfolio
