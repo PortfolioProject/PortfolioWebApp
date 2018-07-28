@@ -7,7 +7,7 @@ from portfolioManager.views import stock_manager
 app_name = 'portfolioManager'
 urlpatterns = [
     path('', index.IndexView.as_view(), name='index'),
-    path('delete/<int:id>', stock_manager.StockView.as_view(), name='index'),
+    path('delete/<int:user_portfolio_id>', stock_manager.StockView.as_view(), name='index'),
     path('login/', login.LoginView.as_view(), name='login'),
     path('logout/', login.LogoutView.as_view(), name='logout'),
     path('stock/', stock_manager.AddStockInUserPortfolio.as_view(), name='price_fetch')
