@@ -35,5 +35,3 @@ class IndexView(LoginRequiredMixin, View):
         for dictObj in different_stocks:
             all_stock_entry = UserPortfolio.objects.filter(user_id=request.user.id, stock_id=dictObj['stock_id'])
             print(all_stock_entry)
-
-
