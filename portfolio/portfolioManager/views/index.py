@@ -2,7 +2,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages import get_messages
 from django.shortcuts import render
 from django.views import View
-from portfolioManager.forms import stock_forms
+import sys
+if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
+    from portfolioManager.forms import stock_forms
 from portfolioManager.models import UserPortfolio
 
 
