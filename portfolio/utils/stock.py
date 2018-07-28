@@ -7,3 +7,4 @@ def get(symbol):
     timeSeriesSorted = sorted(responseJsonObj['Time Series (1min)'], reverse=True)
     lastPrice = responseJsonObj['Time Series (1min)'][timeSeriesSorted[0]]['4. close']
     return {'last_price': lastPrice}
+
