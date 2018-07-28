@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.views import View
 from django.utils import timezone
+import datetime
 
 if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
     from portfolioManager.forms import stock_forms
@@ -50,8 +51,6 @@ class AddStockInUserPortfolio(LoginRequiredMixin, View):
             stock_id = form.cleaned_data['stock_id']
             user_stock = Stocks.objects.get(id=stock_id)
             purchase_time = request.POST['purchase_time']
-            if purchase_time == '':
-                purchase_time = timezone.now
             UserPortfolio.objects.create(stock_id=user_stock, user_id=request.user, purchase_price=purchase_price,
                                          purchase_time=purchase_time, no_of_stocks=no_of_stocks)
         return redirect('/')

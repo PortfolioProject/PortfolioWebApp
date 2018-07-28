@@ -25,6 +25,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th scope="col">Purchased On</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Average Price</th>
                 <th scope="col">No. of Stocks</th>
@@ -34,6 +35,7 @@
             <tbody>
             {% for data in user_portfolio %}
             <tr>
+                <td>{{ data.purchase_time }}</td>
                 <td>{{ data.stock_id }}</td>
                 <td>${{ data.purchase_price }}</td>
                 <td>{{ data.no_of_stocks }}</td>

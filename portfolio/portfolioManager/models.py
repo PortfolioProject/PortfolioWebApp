@@ -21,7 +21,7 @@ class UserPortfolio(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     stock_id = models.ForeignKey(Stocks, on_delete=models.CASCADE)
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
-    purchase_time  = models.DateTimeField(default=timezone.now)
+    purchase_time  = models.CharField(default=timezone.now, max_length=40)
     no_of_stocks   = models.BigIntegerField(default=10)
 
 
