@@ -18,8 +18,9 @@ class UserPortfolio(models.Model):
     stock_id       = models.ForeignKey(Stocks, on_delete=models.CASCADE)
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
     purchase_time  = models.DateTimeField(default=timezone.now)
-    no_of_stocks   = models.BigIntegerField(default=0)
+    no_of_stocks   = models.BigIntegerField(default=10)
 
 
     def __str__(self):
-        return "{} {} {} {}".format(self.user_id, self.stock_id, self.purchase_price, self.current_price)
+        return "{} {} {} {}".format(self.user_id, self.stock_id, self.purchase_price, self.purchase_price,
+                                    self.purchase_time, self.no_of_stocks)
