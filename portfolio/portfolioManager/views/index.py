@@ -5,7 +5,7 @@ from django.views import View
 import sys
 if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
     from portfolioManager.forms import stock_forms
-from portfolioManager.models import UserPortfolio
+from portfolioManager.models import UserPortfolio, Stocks
 
 
 class IndexView(LoginRequiredMixin, View):
@@ -19,11 +19,12 @@ class IndexView(LoginRequiredMixin, View):
             error_message = message
 
         self.calculate_average(request)
-        user_portfolio = UserPortfolio.objects.filter(user_id=request.user.id)
-        self.calculate_average(request)
+        # user_portfolio = UserPortfolio.objects.filter(user_id=request.user.id)
+        user_portfolio = self.calculate_average(request)
+
         # different_stocks = UserPortfolio.objects.values("stock_id").distinct()
         # print("Hi there")
-        # print(user_portfolio)
+        # print(len(user_portfolio))
         # print(len(user_portfolio))
         context = {'user_portfolio': user_portfolio,
                    'error_message': error_message,
@@ -32,6 +33,26 @@ class IndexView(LoginRequiredMixin, View):
 
     def calculate_average(self, request):
         different_stocks = UserPortfolio.objects.values("stock_id").distinct()
+        user_portfolio = []
+        print(different_stocks)
         for dictObj in different_stocks:
             all_stock_entry = UserPortfolio.objects.filter(user_id=request.user.id, stock_id=dictObj['stock_id'])
-            print(all_stock_entry)
+            stock_name = Stocks.objects.get(id=dictObj['stock_id'])
+            number_of_stocks = 0
+            total_value = 0
+            for stock_entry in all_stock_entry:
+                number_of_stocks += stock_entry.no_of_stocks
+                total_value += stock_entry.purchase_price * stock_entry.no_of_stocks
+
+            user_portfolio.append({'stock_id': stock_name, 'no_of_stocks': number_of_stocks,
+                                   'purchase_price': total_value/number_of_stocks})
+
+        return user_portfolio
+        # print(user_portfolio)
+
+
+
+
+
+
+
