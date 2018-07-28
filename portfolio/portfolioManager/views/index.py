@@ -17,8 +17,23 @@ class IndexView(LoginRequiredMixin, View):
         error_message = None
         for message in storage:
             error_message = message
+
+        self.calculate_average(request)
         user_portfolio = UserPortfolio.objects.filter(user_id=request.user.id)
+        self.calculate_average(request)
+        # different_stocks = UserPortfolio.objects.values("stock_id").distinct()
+        # print("Hi there")
+        # print(user_portfolio)
+        # print(len(user_portfolio))
         context = {'user_portfolio': user_portfolio,
                    'error_message': error_message,
                    'add_stock_form': stock_forms.AddStockForm()}
         return render(request, 'portfolioManager/index.html', context)
+
+    def calculate_average(self, request):
+        different_stocks = UserPortfolio.objects.values("stock_id").distinct()
+        for dictObj in different_stocks:
+            all_stock_entry = UserPortfolio.objects.filter(user_id=request.user.id, stock_id=dictObj['stock_id'])
+            print(all_stock_entry)
+
+
