@@ -25,8 +25,8 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">Purchased On</th>
                 <th scope="col">Stock</th>
+                <th scope="col">Current Price</th>
                 <th scope="col">Average Price</th>
                 <th scope="col">No. of Stocks</th>
                 <th scope="col"></th>
@@ -35,15 +35,19 @@
             <tbody>
             {% for data in user_portfolio %}
             <tr>
-                <td>{{ data.purchase_time }}</td>
                 <td>{{ data.stock_id }}</td>
-                <td>${{ data.purchase_price }}</td>
+                <td>${{ data.current_price  | floatformat:2 }}</td>
+                <td>${{ data.purchase_price | floatformat:2 }}</td>
                 <td>{{ data.no_of_stocks }}</td>
                 <td>
                     <form action="/delete/{{ data.id }}">
                         {% csrf_token %}
+                        <div align="right">
+                        <a class="btn btn-success" href="#" role="button">View Details</a>
                         <input class="btn btn-dark" type="submit" value="Delete">
+                        </div>
                     </form>
+
                 </td>
             </tr>
             {% endfor %}
@@ -71,7 +75,7 @@
                         <div class="row">
                             <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                                 <input type="text" class="form-control datetimepicker-input"
-                                       data-target="#datetimepicker1" name="purchase_time">
+                                       data-target="#datetimepicker1" name="purchase_time" >
                                 <div class="input-group-append" data-target="#datetimepicker1"
                                      data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -79,7 +83,10 @@
                             </div>
                             <script type="text/javascript">
                                 $(function () {
-                                    $('#datetimepicker1').datetimepicker();
+                                    $('#datetimepicker1').datetimepicker({
+                                        defaultDate: new Date(),
+                                        format: 'YYYY-MM-DD HH:MM:ss'
+                                    });
                                 });
                             </script>
                         </div>
@@ -93,6 +100,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}
