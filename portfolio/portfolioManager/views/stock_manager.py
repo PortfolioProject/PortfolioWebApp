@@ -7,6 +7,8 @@ from portfolioManager.forms import stock_forms
 from portfolioManager.models import Stocks
 from portfolioManager.models import UserPortfolio
 from utils import stock as utils_stock
+import logging
+logger = logging.getLogger(__name__)
 
 
 class StockView(LoginRequiredMixin, View):
@@ -35,9 +37,8 @@ class AddStockInUserPortfolio(LoginRequiredMixin, View):
         if form.is_valid():
             purchase_price = form.cleaned_data['purchase_price']
             id = form.cleaned_data['stock_id']
-            userObj = User.objects.get(id=request.user.id)
             stockObj = Stocks.objects.get(id=id)
-            stock_symbol = stockObj.trading_name
+            purchase_time = request.POST['purchase_time']
             UserPortfolio.objects.create(stock_id=stockObj, user_id=request.user, purchase_price=purchase_price,
-                                         current_price=utils_stock.get(stock_symbol)['last_price'])
+                                         purchase_time=purchase_time)
         return redirect('/')
