@@ -6,9 +6,9 @@ from portfolioManager.models import UserPortfolio, Stocks
 from utils import stock as st
 
 import sys
+
 if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
     from portfolioManager.forms import stock_forms
-
 
 
 class IndexView(LoginRequiredMixin, View):
@@ -38,6 +38,8 @@ class IndexView(LoginRequiredMixin, View):
             for stock_entry in all_stock_entry:
                 number_of_stocks += stock_entry.no_of_stocks
                 total_value += stock_entry.purchase_price * stock_entry.no_of_stocks
-            user_portfolio.append({'stock_id': stock_name, 'no_of_stocks': number_of_stocks, 'purchase_price':
-                (total_value / number_of_stocks), 'current_price': st.get(stock_name)['last_price']})
+            user_portfolio.append(
+                {'stock_id': stock['stock_id'], 'stock_name': stock_name, 'no_of_stocks': number_of_stocks,
+                 'user_id': request.user.id,
+                 'purchase_price': (total_value / number_of_stocks), 'current_price': st.get(stock_name)['last_price']})
         return user_portfolio

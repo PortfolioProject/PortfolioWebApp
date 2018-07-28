@@ -35,16 +35,17 @@
             <tbody>
             {% for data in user_portfolio %}
             <tr>
-                <td>{{ data.stock_id }}</td>
+                <td>{{ data.stock_name }}</td>
                 <td>${{ data.current_price  | floatformat:2 }}</td>
                 <td>${{ data.purchase_price | floatformat:2 }}</td>
                 <td>{{ data.no_of_stocks }}</td>
                 <td>
-                    <form action="/delete/{{ data.id }}">
+                    <form action="/delete/{{ data.stock_id }}">
                         {% csrf_token %}
                         <div align="right">
-                        <a class="btn btn-success" href="#" role="button">View Details</a>
-                        <input class="btn btn-dark" type="submit" value="Delete">
+                        <a class="btn btn-success" href="/stocks/{{ data.user_id }}/{{ data.stock_id }}"
+                           role="button">View Details</a>
+                        <input class="btn btn-dark" type="submit" value="Remove">
                         </div>
                     </form>
 
