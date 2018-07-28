@@ -55,3 +55,4 @@ class IndexView(LoginRequiredMixin, View):
 
 
 
+
