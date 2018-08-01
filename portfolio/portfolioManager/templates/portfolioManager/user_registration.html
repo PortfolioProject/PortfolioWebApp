@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Portfolio Details {% endblock %}
+
+{% block content %}
+<br/>
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="alert alert-success" role="alert">
+            New User Registration
+        </div>
+    </div>
+</div>
+
+<br/>
+<div class="row">
+    <div class="col-10 offset-1">
+        <form action="/user_registration/" method="post">
+            {% csrf_token %}
+            {{ add_user_form.as_p }}
+            <br/>
+            <div align="center">
+                <input class="btn btn-dark" type="submit" value="Register">
+                <a class="btn btn-success" href="/login"
+                   role="button">Go Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
