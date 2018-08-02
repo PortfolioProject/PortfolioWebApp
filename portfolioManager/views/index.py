@@ -29,6 +29,8 @@ class IndexView(LoginRequiredMixin, View):
 
     def calculate_average(self, request):
         different_stocks = UserPortfolio.objects.values("stock_id").distinct()
+        if different_stocks is None:
+            return None
         user_portfolio = []
         for stock in different_stocks:
             all_stock_entry = UserPortfolio.objects.filter(user_id=request.user.id, stock_id=stock['stock_id'])
